@@ -1,19 +1,11 @@
 /* eslint-disable react/prop-types */
+
+import { useNavigate } from "react-router-dom";
+
 const Row = (props) => {
-  const userData = props.user;
-
-  const handleClick = (act) => {
-    const action = props.call;
-
-    const res = action ? "Call" : "Put";
-    if (act === res) {
-      userData.balance += userData.balance * 0.06;
-      console.log(userData);
-    } else {
-      userData.balance -= userData.balance * 0.06;
-      console.log(userData);
-    }
-  };
+  // const userData = props.user;
+  console.log(props.isEnabled);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-20 flex ">
@@ -46,7 +38,7 @@ const Row = (props) => {
         <div className="w-auto flex items-center  h-full px-4 gap-2 justify-end">
           <button
             className="w-fit m-1 bg-green-600 text-sm md:text-lg"
-            onClick={() => handleClick("Call")}
+            onClick={() => navigate(props.name)}
             disabled={!props.isEnabled}
             style={{
               backgroundColor: !props.isEnabled
@@ -54,19 +46,7 @@ const Row = (props) => {
                 : "rgb(22 163 74 / var(--tw-bg-opacity))",
             }}
           >
-            Call
-          </button>
-          <button
-            className="w-fit m-1 bg-red-600 text-sm md:text-lg"
-            onClick={() => handleClick("Put")}
-            disabled={!props.isEnabled}
-            style={{
-              backgroundColor: !props.isEnabled
-                ? "gray"
-                : "rgb(220 38 38 / var(--tw-bg-opacity))",
-            }}
-          >
-            Put
+            View
           </button>
         </div>
       </div>

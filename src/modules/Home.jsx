@@ -6,12 +6,13 @@ import Slider from "../component/Slider";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import rechargeImg from "./images/RechargeImg.png";
-
+import Row from "../component/Row";
 import shareImg from "./images/share.png";
 import serviceImg from "./images/support.png";
 import "./style/style.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
@@ -166,13 +167,16 @@ const Home = () => {
             </button>
           </div>
         </div>
-
         <p className="font-[neu] text-4xl my-4 w-full flex items-center">
           Explore the Market
         </p>
-        {/* <Link to="/prod">Products</Link> */}
-
-        {/* {newProd &&
+        <div className="flex justify-between px-8">
+          <p>Name</p>
+          <p>Price</p>
+          <p>Status</p>
+          <p>Action</p>
+        </div>
+        {newProd &&
           newProd?.map((item) => {
             return (
               <Row
@@ -183,12 +187,11 @@ const Home = () => {
                 call={item.call}
                 change={item.change}
                 user={user}
-                isEnabled={isEnabled}
+                isEnabled={currentTimeInRange}
               />
             );
-          })} */}
-
-        <table className="table-auto w-full">
+          })}
+        {/* <table className="table-auto w-full">
           <thead>
             <tr>
               <th className="px-4 py-2">Product</th>
@@ -218,7 +221,7 @@ const Home = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
       </div>
     </div>
   );
