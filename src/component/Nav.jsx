@@ -20,8 +20,8 @@ const Nav = (props) => {
         SSP Ports
       </p>
       <div className="h-[95%] md:h-auto flex gap-4 md:gap-8 items-center mr-4 md:mr-8 ml-4 md:ml-8">
-        <span className="hidden md:inline-block">BALANCE:</span>
-        <span className="w-fit px-2 py-2 bg-white-200 rounded text-white">
+        <span className="hidden md:inline-block text-red-600">BALANCE:</span>
+        <span className="w-fit px-2 py-2 bg-white-200 text-red-600 rounded">
           Rs. {props.balance}
         </span>
         <button className="bg-red-500" onClick={logout}>

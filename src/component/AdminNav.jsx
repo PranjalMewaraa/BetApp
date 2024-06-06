@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import log from "../../public/1714553082803.png";
 const NavA = () => {
   return (
-    <div className="w-full h-12 flex justify-between my-4 items-center">
+    <div className="w-full h-12 flex  justify-between my-4 items-center">
       <p className="ml-4  text-5xl flex h-full items-center text-red-600 font-[founder]">
         <span className="h-full mr-5">
           <img src={log} alt="" className="h-full" />

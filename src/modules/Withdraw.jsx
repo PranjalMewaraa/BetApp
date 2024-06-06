@@ -41,9 +41,9 @@ const Withdraw = () => {
     fetchAmountSetup();
   }, []);
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen bg-[#121212]">
       <Nav balance={user.withrawalAmount} />
-      <div className="w-full p-10 flex flex-col gap-4">
+      <div className="w-full p-10 flex flex-col  gap-4">
         <p className="font-[neu] text-4xl w-full flex items-center">
           Amount Setup
         </p>

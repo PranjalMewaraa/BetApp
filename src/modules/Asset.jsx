@@ -28,7 +28,7 @@ export default function Asset() {
     fetchWithdrawData();
   }, []);
   return (
-    <div className="assetContainer">
+    <div className="assetContainer bg-[#121212]">
       <button
         className="RechargeBtn"
         onClick={() => navigate("/home/action/deposit")}

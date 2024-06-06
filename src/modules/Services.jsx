@@ -3,7 +3,7 @@ import Nav from "../component/Nav";
 const Services = () => {
   const user = JSON.parse(localStorage.getItem("User"));
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen bg-[#121212]">
       <Nav balance={user.withrawalAmount} />
       <div className="w-full p-10 flex flex-col gap-4">
         <p className="font-[neu] mb-8 text-4xl w-full flex items-center">
