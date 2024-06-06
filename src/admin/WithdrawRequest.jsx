@@ -73,7 +73,7 @@ const WithdrawlReq = () => {
   );
 
   return (
-    <div className="w-full min-h-screen bg-[#121212]">
+    <div className="w-full min-h-screen bg-[#121212] text-white">
       <NavA balance={0} />
       <div className="w-full p-10 flex flex-col gap-4">
         <p className="font-[neu] text-4xl w-full flex items-center">Details</p>

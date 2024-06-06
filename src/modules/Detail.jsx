@@ -9,7 +9,7 @@ const Detail = () => {
     setSelectedOption(event.target.value);
   };
   return (
-    <div className="w-full h-fit min-h-screen flex flex-col bg-[#121212] gap-4">
+    <div className="w-full h-fit min-h-screen flex flex-col text-white bg-[#121212] gap-4">
       <Nav />
       <div className="w-full items-center p-10 flex flex-col gap-4">
         <div className="w-11/12 h-[68vh] bg-slate-50 rounded-md"></div>

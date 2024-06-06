@@ -25,7 +25,7 @@ const Members = () => {
     getMember();
   }, []);
   return (
-    <div className="w-full min-h-screen bg-[#121212] flex flex-col gap-3">
+    <div className="w-full min-h-screen bg-[#121212] text-white flex flex-col gap-3">
       <Nav balance={user.withrawalAmount} />
       <div className="p-2 md:p-10 w-full h-fit flex flex-col gap-2">
         <p className="text-4xl my-4">Your Members</p>

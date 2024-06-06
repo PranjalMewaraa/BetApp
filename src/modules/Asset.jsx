@@ -28,7 +28,7 @@ export default function Asset() {
     fetchWithdrawData();
   }, []);
   return (
-    <div className="assetContainer bg-[#121212]">
+    <div className="assetContainer bg-[#121212] text-white">
       <button
         className="RechargeBtn"
         onClick={() => navigate("/home/action/deposit")}
@@ -42,10 +42,14 @@ export default function Asset() {
         Withdraw
       </button>
       <div className="rechHistory">
-        <h2 id="rechargeHead">Recharge History</h2>
+        <h2 id="rechargeHead" className="text-white">
+          Recharge History
+        </h2>
 
         {rechargeHistory.length === 0 ? (
-          <p id="emptyRecharge">No history yet.</p>
+          <p id="emptyRecharge" className="text-white">
+            No history yet.
+          </p>
         ) : (
           <>
             {rechargeHistory.map((item, index) => (
@@ -64,10 +68,14 @@ export default function Asset() {
         )}
       </div>
       <div className="rechHistory">
-        <h2 id="rechargeHead">Withdraw History</h2>
+        <h2 id="rechargeHead" className="text-white">
+          Withdraw History
+        </h2>
 
         {withdrawHistory.length === 0 ? (
-          <p id="emptyRecharge">No history yet.</p>
+          <p id="emptyRecharge" className="text-white">
+            No history yet.
+          </p>
         ) : (
           <>
             {withdrawHistory.map((item, index) => (

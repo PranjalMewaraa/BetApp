@@ -133,7 +133,7 @@ const Home = () => {
   const currentTimeInRange = isCurrentTimeInRange();
 
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#121212] gap-3">
+    <div className="w-full min-h-screen flex flex-col text-white bg-[#121212] gap-3">
       <Nav balance={user?.withrawalAmount} />
       <div className="p-1 md:p-10 w-full h-fit flex flex-col gap-2">
         <p className="font-[neu] pt-8 text-md md:text-4xl justify-between flex items-center">
