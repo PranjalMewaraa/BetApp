@@ -45,10 +45,10 @@ const RowAdmin = (props) => {
 
   return (
     <div className="w-full h-20 flex">
-      <div className="w-full h-full bg-gray-900 bg-opacity-44 backdrop-blur-md border flex border-gray-900 border-opacity-45 rounded-lg shadow-lg">
+      <div className="w-full h-full justify-between flex-wrap bg-gray-900 bg-opacity-44 backdrop-blur-md border flex border-gray-900 border-opacity-45 rounded-lg shadow-lg">
         <div className="w-1/4 flex items-center h-full px-4">{props.name}</div>
 
-        <div className="w-1/4 flex items-center h-full px-4 gap-2 flex justify-end">
+        <div className="w-1/4  items-center h-full px-4 gap-2 flex justify-end">
           <label className="inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
