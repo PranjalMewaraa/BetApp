@@ -85,6 +85,7 @@ const ProductU = () => {
             <input
               type="datetime-local"
               value={startDateTime}
+              className="text-black"
               onChange={(e) => setStartDateTime(e.target.value)}
             />
             <p>Start Time: {startDateTime}</p>
@@ -94,12 +95,15 @@ const ProductU = () => {
             <input
               type="datetime-local"
               value={endDateTime}
+              className="text-black"
               onChange={(e) => setEndDateTime(e.target.value)}
             />
             <p>End Time : {endDateTime}</p>
           </div>
         </div>
-        <button onClick={handleSetupTime}>Setup Time</button>
+        <button className="bg-red-400" onClick={handleSetupTime}>
+          Setup Time
+        </button>
         <div className="flex flex-wrap mt-5 w-full text-white">
           {prods.map((item) => (
             <RowAdmin

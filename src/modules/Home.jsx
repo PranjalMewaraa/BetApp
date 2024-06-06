@@ -171,7 +171,7 @@ const Home = () => {
           Explore the Market
         </p>
         <div className="flex justify-between px-8">
-          <p>Name</p>
+          <p>Port Name</p>
           <p>Price</p>
           <p className="hidden md:flex">Status</p>
           <p>Action</p>
