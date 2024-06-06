@@ -190,6 +190,10 @@ const Routes = () => {
           ),
         },
         {
+          path: "/accept-referal/:id",
+          element: <AcceptReferal />,
+        },
+        {
           path: "/AUCKLAND PORT",
           element: (
             <>
@@ -257,7 +261,7 @@ const Routes = () => {
       element: <SignUpForm />,
     },
     {
-      path: "/accept-referal/:referalCode",
+      path: "/accept-referal/:id",
       element: <AcceptReferal />,
     },
   ];

@@ -7,8 +7,9 @@ import { useState } from "react";
 
 function AcceptReferal() {
   const navigate = useNavigate();
-  const referalCode = useParams();
-  console.log(referalCode);
+  const { id } = useParams();
+  console.log(id);
+  const referalCode = id;
 
   const BASEURL = "https://kdm-money-server.onrender.com/api/v1";
   const [formData, setFormData] = useState({

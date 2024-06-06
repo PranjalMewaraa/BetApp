@@ -10,7 +10,7 @@ const Row = (props) => {
   return (
     <div className="w-full h-20 flex ">
       <div className="w-full h-full justify-between bg-gray-900 bg-opacity-44 backdrop-blur-md border flex border-gray-900 border-opacity-45 rounded-lg shadow-lg ">
-        <div className="w-auto flex items-center text-[2.5vw] md:text-lg h-full px-4">
+        <div className="w-auto flex items-center text-white text-[2.5vw] md:text-lg h-full px-4">
           {props.name}
         </div>
         <div className="w-auto flex items-center h-full px-4 md:text-lg text-[2.5vw]">
