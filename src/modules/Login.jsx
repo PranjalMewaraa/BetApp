@@ -59,7 +59,7 @@ function Login() {
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg text-black outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -68,7 +68,7 @@ function Login() {
           value={formData.password}
           onChange={handleChange}
           placeholder="Password"
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg text-black outline-none focus:border-blue-500 transition-colors"
           required
         />
 
