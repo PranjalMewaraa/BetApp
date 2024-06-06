@@ -144,14 +144,14 @@ const Home = () => {
         </div>
         <div className="rechargeContainer">
           <button
-            className="recharegButton"
+            className="recharegButton p-4"
             onClick={() => navigate("/home/action/deposit")}
           >
             <div className="rechargeText">
               <p className="maintxt">Recharge</p>
               <p className="subTxt">Quick and Easy</p>
             </div>
-            <img id="recImg" src={rechargeImg} alt="" />
+            <img id="recImg" src={rechargeImg} alt="" className="p-4" />
           </button>
           <div className="rechargeChild">
             <button className="shareService" onClick={genRef}>
