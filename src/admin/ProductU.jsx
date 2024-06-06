@@ -79,7 +79,7 @@ const ProductU = () => {
         <p className="font-[neu] text-4xl w-full flex items-center">
           Products Setup
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-col">
           <div>
             <h2>Start Time:</h2>
             <input
