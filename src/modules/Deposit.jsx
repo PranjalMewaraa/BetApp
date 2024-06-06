@@ -38,7 +38,7 @@ const Deposit = () => {
         axios
           .post(
             `https://apihome.in/panel/api/payin_intent/?key=YOUR API KEY&amount=COLLECTION 
-        AMOUNT&reqid=UNIQUE NUMBER&rdrct=https://localhost:5173`
+        AMOUNT&reqid=UNIQUE NUMBER&rdrct=https://sspports.xyz`
           )
           .then((res) => {
             console.log(res.data);

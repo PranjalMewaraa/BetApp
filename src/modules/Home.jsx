@@ -137,7 +137,11 @@ const Home = () => {
       <Nav balance={user?.withrawalAmount} />
       <div className="p-1 md:p-10 w-full h-fit flex flex-col gap-2">
         <p className="font-[neu] pt-8 text-md md:text-4xl justify-between flex items-center">
-          {`Hey ${user?.userName} !`}
+          {`Hey ${user?.userName} !`} <br />
+        </p>
+        <p className="text-white">
+          This Program will be launched for 3 years in india for customer
+          benefits
         </p>
         <div className="w-[full] rounded-xl h-[40vh] bg-white my-5">
           <Slider />
