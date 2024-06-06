@@ -269,7 +269,7 @@ const Routes = () => {
     ...routesForPublic,
     ...(!token ? routesForNotAuthenticatedOnly : []),
     ...routesForAuthenticatedOnly,
-    ...(user.accountType === "Admin" ? routesforAdmin : []),
+    ...(user?.accountType === "Admin" ? routesforAdmin : []),
   ]);
 
   // Provide the router configuration using RouterProvider

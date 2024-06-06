@@ -50,7 +50,7 @@ export default function Bottombar() {
         );
       })}
 
-      {user.accountType === "Admin" && (
+      {user?.accountType === "Admin" && (
         <Link
           to="/admin"
           className={`flex flex-col items-center text-black hover:text-slate-700 transition-all duration-200 p-3 ${

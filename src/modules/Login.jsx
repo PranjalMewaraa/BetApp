@@ -18,21 +18,21 @@ function Login() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(e);
     if (formData.email !== "") {
-      const toastId = toast.loading("Logging in...")
+      const toastId = toast.loading("Logging in...");
       try {
-        const response = await axios.post(`${BASEURL}/auth/log-in`, formData)
-        
-        if(response.data.success){
+        const response = await axios.post(`${BASEURL}/auth/log-in`, formData);
+
+        if (response.data.success) {
           toast.success("Logged In");
-          setToken(response.data.token)
+          setToken(response.data.token);
           localStorage.setItem("User", JSON.stringify(response.data.user));
           console.log(localStorage.getItem("User"));
-          if(response.data.accountType === "Admin"){
-            navigate("/admin")
-          }else{
+          if (response?.data.accountType === "Admin") {
+            navigate("/admin");
+          } else {
             navigate("/");
           }
         }
