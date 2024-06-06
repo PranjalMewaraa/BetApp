@@ -12,7 +12,7 @@ import serviceImg from "./images/support.png";
 import "./style/style.css";
 import axios from "axios";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
