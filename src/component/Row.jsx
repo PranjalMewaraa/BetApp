@@ -13,7 +13,7 @@ const Row = (props) => {
         <div className=" w-48 flex items-center text-white text-[2.5vw] md:text-lg h-full px-4">
           {props.name}
         </div>
-        <div className="w-auto flex items-center h-full px-4 md:text-lg text-[2.5vw]">
+        <div className="w-auto flex items-center text-white h-full px-4 md:text-lg text-[2.5vw]">
           {`Rs${props.price}`}{" "}
         </div>
         <div
