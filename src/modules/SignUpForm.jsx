@@ -78,7 +78,7 @@ function SignUpForm() {
           placeholder="Full Name"
           value={formData.userName}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none text-black focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -87,7 +87,7 @@ function SignUpForm() {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -96,7 +96,7 @@ function SignUpForm() {
           placeholder="Phone number"
           value={formData.phoneNo}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -105,7 +105,7 @@ function SignUpForm() {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -114,7 +114,7 @@ function SignUpForm() {
           placeholder="Confirm Password"
           value={formData.confirmPassword}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
 
