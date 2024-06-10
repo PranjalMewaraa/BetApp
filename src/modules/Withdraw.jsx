@@ -21,6 +21,7 @@ const Withdraw = () => {
       )
       .then((res) => {
         console.log(res);
+        alert(res.data.message);
         console.log(amountS);
       });
   };

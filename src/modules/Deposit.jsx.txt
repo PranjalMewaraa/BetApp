@@ -7,7 +7,7 @@ const Deposit = () => {
   const [Amount, setAmount] = useState(0);
   const [amountS, setAmountS] = useState();
   const [jsonResponse, setJsonResponse] = useState("");
-
+  
   const handleInputChange = (e) => {
     setAmount(e.target.value);
   };
@@ -25,25 +25,16 @@ const Deposit = () => {
   };
 
   const generateUniqueId = () => {
-    const timestamp = Date.now().toString().slice(-5);
-    const randomPart = Math.floor(
-      1000000000 + Math.random() * 9000000000
-    ).toString();
-    return (timestamp + randomPart).slice(0, 11);
+    const timestamp = Date.now().toString().slice(-5); 
+    const randomPart = Math.floor(1000000000 + Math.random() * 9000000000).toString(); 
+    return (timestamp + randomPart).slice(0, 11); 
   };
 
   const getJson = async () => {
     try {
       const uniqueId = generateUniqueId();
       const res = await axios.get(
-        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json; charset=utf-8",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
+        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://`
       );
 
       const responseData = res.data;
@@ -87,7 +78,10 @@ const Deposit = () => {
             />
           </div>
 
-          <button className="w-[45%] p-2 mt-4 bg-[#EF4444]" onClick={getJson}>
+          <button
+            className="w-[45%] p-2 mt-4 bg-[#EF4444]"
+            onClick={getJson}
+          >
             Deposit
           </button>
         </div>

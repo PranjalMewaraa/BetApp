@@ -16,10 +16,7 @@ const Services = () => {
   const handleWhatsappComplaint = () => {
     window.location.href = "https://wa.me/447441929522";
   };
-  const handleCommunityWP = () => {
-    window.location.href =
-      "https://whatsapp.com/channel/0029VagbPxz0lwgy7cnhBV0L";
-  };
+
   const handleWPDailySignal = () => {
     window.location.href =
       "https://whatsapp.com/channel/0029VagbPxz0lwgy7cnhBV0L";

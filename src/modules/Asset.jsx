@@ -7,18 +7,20 @@ export default function Asset() {
   const [rechargeHistory, setrechargeHistory] = useState("");
   const [withdrawHistory, setWithdrawHistory] = useState("");
 
+  const userNew = JSON.parse(localStorage.getItem("User"));
+
   const fetchWithdrawData = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/withdrawdata");
-      setWithdrawHistory(response.data);
+      //const response = await axios.get("http://localhost:5001/withdrawdata");
+      setWithdrawHistory(userNew?.withdrawalHistry);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   const fetchRechargeData = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/rechargedata");
-      setrechargeHistory(response.data);
+      //const response = await axios.get("http://localhost:5001/rechargedata");
+      setrechargeHistory(userNew?.paymmentHistory);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
