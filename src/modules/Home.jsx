@@ -79,6 +79,15 @@ const Home = () => {
       });
   };
 
+  const [ip, setIp] = useState("");
+
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => setOut_ip(data.ip))
+      .catch((error) => console.error("Error fetching IP: ", error));
+  }, []);
+
   const genRef = async () => {
     try {
       await axios
