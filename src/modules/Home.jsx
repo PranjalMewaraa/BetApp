@@ -12,41 +12,105 @@ import serviceImg from "./images/support.png";
 import "./style/style.css";
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
+const useAxios = () => {
+  const nav = useNavigate();
+
+  const axiosInstance = axios.create({
+    baseURL: "https://kdm-money-server.onrender.com/api/v1/auth",
+  });
+
+  // Add a request interceptor
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const authToken = localStorage.getItem("token");
+      if (authToken) {
+        config.headers.Authorization = `Bearer ${authToken}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  // Add a response interceptor
+  axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response && error.response.status === 401) {
+        nav("/");
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  return axiosInstance;
+};
+
 const Home = () => {
   const user = JSON.parse(localStorage.getItem("User"));
-
+  const nav = useNavigate();
   const [newProd, setProd] = useState([]);
   const [amountS, setAmountS] = useState();
   const [callStartTime, setCallStartTime] = useState("");
   const [callEndTime, setCallEndTime] = useState("");
   // const [productStatus, setProductStatus] = useState(getProductStatus());
-
+  const axiosInstance = useAxios();
   const navigate = useNavigate();
+  // const getProduct = async () => {
+  //   axios.interceptors.request.use(
+  //     (config) => {
+  //       const authToken = localStorage.getItem("token");
+  //       if (authToken) {
+  //         config.headers.Authorization = `Bearer ${authToken}`;
+  //       }
+  //       return config;
+  //     },
+
+  //     (error) => {
+  //       if (error.response && error.response.status === 401) {
+  //         nav("/login");
+  //       }
+  //       console.log("Header", error);
+  //       return Promise.reject(error);
+  //     }
+  //   );
+  //   try {
+  //     axios
+  //       .get(
+  //         "https://kdm-money-server.onrender.com/api/v1/auth/fetch-all-products"
+  //       )
+  //       .then((res) => {
+  //         console.log(res);
+  //         if (res.data.message == "Token is invalide") {
+  //           nav("/login");
+  //         }
+  //         console.log(res.data.products);
+  //         setProd(res.data.products);
+  //       });
+  //   } catch (error) {
+  //     console.log("HEllo" + error);
+  //   }
+  // };
   const getProduct = async () => {
-    await axios.interceptors.request.use(
-      (config) => {
-        const authToken = localStorage.getItem("token");
-        if (authToken) {
-          config.headers.Authorization = `Bearer ${authToken}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-    axios
-      .get(
-        "https://kdm-money-server.onrender.com/api/v1/auth/fetch-all-products"
-      )
-      .then((res) => {
-        console.log(res.data.products);
+    try {
+      const res = await axiosInstance.get("/fetch-all-products");
+      console.log(res);
+      if (res.data.message === "Token is invalide") {
+        nav("/");
+      } else {
         setProd(res.data.products);
-      });
+      }
+    } catch (error) {
+      console.log("Error:", error.response.status);
+      if (error.response.status == 401) {
+        nav("/login");
+      }
+    }
   };
   const [ref, setRef] = useState("");
   const fetchAmountSetup = async () => {
@@ -55,6 +119,7 @@ const Home = () => {
         "https://kdm-money-server.onrender.com/api/v1/auth/fetch-amount-details"
       )
       .then((res) => {
+        console.log("hel" + res);
         const { amountsDetails } = res.data; // Extract amountsDetails object from response
         const { callTime } = amountsDetails; // Extract callTime object from amountsDetails
         setCallStartTime(callTime.start); // Set call start time state
@@ -84,7 +149,8 @@ const Home = () => {
   useEffect(() => {
     fetch("https://api.ipify.org?format=json")
       .then((response) => response.json())
-      .then((data) => setOut_ip(data.ip))
+      .then((data) => setIp(data.ip))
+      .then(console.log(ip))
       .catch((error) => console.error("Error fetching IP: ", error));
   }, []);
 

@@ -24,7 +24,13 @@ const WithdrawlReq = () => {
         `https://kdm-money-server.onrender.com/api/v1/admin/get-all-withdrawal-req`
       )
       .then((res) => {
-        setReq(res.data.withdrawalReq);
+        console.log(res.data);
+        setReq(
+          res.data.withdrawalReq.filter(
+            (request) =>
+              request.status !== "Approved" && request.status !== "Rejected"
+          )
+        );
       });
   }
 

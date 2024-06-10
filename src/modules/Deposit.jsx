@@ -35,16 +35,29 @@ const Deposit = () => {
   const getJson = async () => {
     try {
       const uniqueId = generateUniqueId();
-      const res = await axios.get(
-        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json; charset=utf-8",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const res = await axios
+        .get(
+          `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        )
+        .then((res) => {
+          axios
+            .post(
+              `https://kdm-money-server.onrender.com/api/v1/payment/pay-process`,
+              {
+                amount: Amount,
+              }
+            )
+            .then((res) => {
+              console.log(res.data);
+            });
+        });
 
       const responseData = res.data;
       setJsonResponse(JSON.stringify(responseData, null, 2));
