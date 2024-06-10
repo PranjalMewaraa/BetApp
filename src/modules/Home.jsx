@@ -11,6 +11,7 @@ import shareImg from "./images/share.png";
 import serviceImg from "./images/support.png";
 import "./style/style.css";
 import axios from "axios";
+import app from "../assets/test.png";
 
 import { useNavigate, useNavigation } from "react-router-dom";
 
@@ -243,6 +244,10 @@ const Home = () => {
             >
               <img className="shareServiceImg2" src={serviceImg} alt="img" />
               Service
+            </button>
+            <button className="shareService">
+              <img className="shareServiceImg2" src={app} alt="img" />
+              Download Application
             </button>
           </div>
         </div>

@@ -103,6 +103,14 @@ const Routes = () => {
           ),
         },
         {
+          path: "/signup",
+          element: (
+            <>
+              <SignUpForm />
+            </>
+          ),
+        },
+        {
           path: "/home/action/deposit",
           element: (
             <>
