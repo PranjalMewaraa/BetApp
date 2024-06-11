@@ -25,35 +25,26 @@ const Deposit = () => {
   };
 
   const generateUniqueId = () => {
-    const timestamp = Date.now().toString().slice(-5);
-    const randomPart = Math.floor(
-      1000000000 + Math.random() * 9000000000
-    ).toString();
-    return (timestamp + randomPart).slice(0, 11);
+    const baseId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    return baseId.slice(0, 20);
   };
 
   const getJson = async () => {
     try {
       const uniqueId = generateUniqueId();
-      const res = await axios.get(
-        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz/`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json; charset=utf-8",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
+      const resExternal = await axios.get(
+        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz/`
       );
 
-      const responseData = res.data;
-      setJsonResponse(JSON.stringify(responseData, null, 2));
-      console.log(responseData);
+      const responseDataExternal = resExternal.data;
+      setJsonResponse(JSON.stringify(responseDataExternal, null, 2));
+      console.log(responseDataExternal);
 
-      if (responseData.status === "Success") {
-        window.location.href = responseData.payurl;
+      if (responseDataExternal.status === "Success") {
+        updateUserBalance(Amount);
+        window.location.href = responseDataExternal.payurl;
       } else {
-        alert(responseData.remark);
+        alert(responseDataExternal.remark);
       }
     } catch (error) {
       console.error("Error fetching JSON response:", error);
@@ -61,7 +52,24 @@ const Deposit = () => {
     }
   };
 
-  const user = JSON.parse(localStorage.getItem("User"));
+  const updateUserBalance = async (amount) => {
+    try {
+      const user = JSON.parse(localStorage.getItem("User"));
+      const newBalance = user.withrawalAmount + parseFloat(amount);
+      user.withrawalAmount = newBalance;
+      localStorage.setItem("User", JSON.stringify(user));
+
+      // Call your internal server to update the user's balance
+      await axios.post(
+        "https://kdm-money-server.onrender.com/api/v1/payment/pay-process",
+        { amount }
+      );
+
+      alert("Balance updated successfully!");
+    } catch (error) {
+      console.error("Error updating user balance:", error);
+    }
+  };
 
   useEffect(() => {
     fetchAmountSetup();
@@ -69,7 +77,7 @@ const Deposit = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#121212] text-white">
-      <Nav balance={user.withrawalAmount} />
+      <Nav balance={JSON.parse(localStorage.getItem("User")).withrawalAmount} />
       <div className="w-full p-10 flex flex-col gap-4">
         <p className="font-[neu] text-4xl w-full flex items-center">
           Amount Setup
@@ -82,7 +90,7 @@ const Deposit = () => {
               type="number"
               name={"Deposit Amount"}
               min={0}
-              placeholder={"Enter Recharge Amount"}
+              placeholder={600}
               onChange={handleInputChange}
             />
           </div>
