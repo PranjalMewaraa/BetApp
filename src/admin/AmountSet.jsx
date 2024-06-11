@@ -64,7 +64,7 @@ const AmountSet = () => {
         <div className="flex gap-4 justify-between flex-wrap mt-5 w-full">
           <InputBox
             label="Set Withdrawal Tax"
-            placeholder="6%"
+            placeholder={amountSet.withdrawalTax}
             name="withdrawalTax"
             type="number"
             value={amountSet.withdrawalTax}
@@ -73,16 +73,16 @@ const AmountSet = () => {
           />
           <InputBox
             label="Set deposite Tax"
-            placeholder="6%"
+            placeholder={amountSet.dipositeTax}
             name="depositeTax"
             type="number"
-            value={amountSet.depositeTax}
+            value={amountSet.dipositeTax}
             onChange={handleInputChange}
             min={0}
           />
           <InputBox
             label="Set Minimum Withdrawal Amount"
-            placeholder="600"
+            placeholder={amountSet.minAmount}
             name="minAmount"
             type="number"
             value={amountSet.minAmount}
@@ -91,7 +91,7 @@ const AmountSet = () => {
           />
           <InputBox
             label="Set Minimum deposit Amount"
-            placeholder="600"
+            placeholder={amountSet.maxAmount}
             name="maxAmount"
             type="number"
             value={amountSet.maxAmount}
@@ -100,7 +100,7 @@ const AmountSet = () => {
           />
           <InputBox
             label="Invite Bonus Amount"
-            placeholder="10"
+            placeholder={amountSet.inviteBonus}
             name="inviteBonus"
             type="number"
             value={amountSet.inviteBonus}
@@ -109,7 +109,7 @@ const AmountSet = () => {
           />
           <InputBox
             label="Level 1 Bonus"
-            placeholder="10"
+            placeholder={amountSet.levelOneBonus}
             name="levelOneBonus"
             type="number"
             value={amountSet.levelOneBonus}
@@ -118,7 +118,7 @@ const AmountSet = () => {
           />
           <InputBox
             label="Level 2 Bonus"
-            placeholder="10"
+            placeholder={amountSet.levelTwoBonus}
             name="levelTwoBonus"
             type="number"
             value={amountSet.levelTwoBonus}
@@ -128,7 +128,7 @@ const AmountSet = () => {
           <InputBox
             label="Level 3 Bonus"
             placeholder="10"
-            name="levelThreeBonus"
+            name={amountSet.levelThreeBonus}
             type="number"
             value={amountSet.levelThreeBonus}
             onChange={handleInputChange}

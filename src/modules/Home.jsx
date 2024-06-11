@@ -13,7 +13,7 @@ import "./style/style.css";
 import axios from "axios";
 import app from "../assets/test.png";
 
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
@@ -275,9 +275,9 @@ const Home = () => {
               />
             );
           })}
-        {/* <table className="table-auto w-full">
+        {/* <table className="table-auto w-full rounded-md">
           <thead>
-            <tr>
+            <tr className="p-2 bg-gray-900">
               <th className="px-4 py-2">Product</th>
               <th className="px-4 py-2">Price</th>
               <th className="px-4 py-2">Status</th>
@@ -286,7 +286,7 @@ const Home = () => {
           </thead>
           <tbody>
             {newProd.map((product) => (
-              <tr className="text-center" key={product._id}>
+              <tr className="text-center p-2 bg-gray-900" key={product._id}>
                 <td className="border px-4 py-2">{product.name}</td>
                 <td className="border px-4 py-2">${product.price}</td>
                 <td className="border px-4 py-2">

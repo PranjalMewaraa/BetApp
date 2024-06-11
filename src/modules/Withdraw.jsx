@@ -14,16 +14,20 @@ const Withdraw = () => {
   };
 
   const Withdraw = async () => {
-    await axios
-      .post(
-        `https://kdm-money-server.onrender.com/api/v1/payment/withraw-money`,
-        { upi: Upi, amount: Amount }
-      )
-      .then((res) => {
-        console.log(res);
-        alert(res.data.message);
-        console.log(amountS);
-      });
+    try {
+      await axios
+        .post(
+          `https://kdm-money-server.onrender.com/api/v1/payment/withraw-money`,
+          { upi: Upi, amount: Amount }
+        )
+        .then((res) => {
+          console.log(res);
+          alert(res.data.message);
+          console.log(amountS);
+        });
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   const fetchAmountSetup = async () => {
@@ -60,8 +64,8 @@ const Withdraw = () => {
             max={user.withrawalAmount}
           />
           <InputBox
-            label="Set Amount to Withdraw"
-            placeholder="600"
+            label="Enter Amount to Withdraw"
+            placeholder={Amount || 0}
             name="Set Amount to Withdraw"
             type="number"
             value={Amount}

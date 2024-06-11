@@ -112,16 +112,10 @@ function AcceptReferal() {
           className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
-        <input
-          type="text"
-          name="referCode"
-          placeholder="Referral Code"
-          value={referalCode}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
-        />
+
         <button
           type="submit"
-          className="w-full h-10 bg-blue-500 text-white rounded-lg cursor-pointer transition-colors hover:bg-blue-700"
+          className="w-full h-10 bg-blue-500 text-black rounded-lg cursor-pointer transition-colors hover:bg-blue-700"
         >
           Sign Up
         </button>

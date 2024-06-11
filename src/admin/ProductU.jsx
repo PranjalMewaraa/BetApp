@@ -7,6 +7,8 @@ const ProductU = () => {
   const [prods, setProd] = useState([]);
   const [startDateTime, setStartDateTime] = useState("");
   const [endDateTime, setEndDateTime] = useState("");
+  const [startWstartTime, setWstartTime] = useState("");
+  const [startWendTime, setWendTime] = useState("");
 
   const fetchProduct = async () => {
     try {
@@ -26,8 +28,11 @@ const ProductU = () => {
       );
       console.log("Data fetched successfully:", response.data);
       const { callTime } = response.data;
+      const { withdrawTime } = response.data;
       setStartDateTime(formatDateTime(callTime.start));
       setEndDateTime(formatDateTime(callTime.end));
+      setWstartTime(formatDateTime(withdrawTime.start));
+      setWendTime(formatDateTime(withdrawTime.end));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -44,8 +49,8 @@ const ProductU = () => {
 
   const handleSetupTime = () => {
     const updatedData = {
-      withStartTime: startDateTime,
-      withEndTime: endDateTime,
+      withStartTime: startWstartTime,
+      withEndTime: startWendTime,
       callStartTime: startDateTime,
       callEndTime: endDateTime,
     };
@@ -63,6 +68,19 @@ const ProductU = () => {
         console.error("Error setting time:", error.response.data);
       });
   };
+  function formatDateToLocaleString(dateStr) {
+    const date = new Date(dateStr);
+
+    return date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZoneName: "short",
+    });
+  }
 
   useEffect(() => {
     fetchDataFromApi();
@@ -79,26 +97,52 @@ const ProductU = () => {
         <p className="font-[neu] text-4xl w-full flex items-center">
           Products Setup
         </p>
-        <div className="flex gap-4 flex-col">
-          <div>
-            <h2>Start Time:</h2>
-            <input
-              type="datetime-local"
-              value={startDateTime}
-              className="text-black"
-              onChange={(e) => setStartDateTime(e.target.value)}
-            />
-            <p>Start Time: {startDateTime}</p>
+        <div className="flex w-full justify-between">
+          <div className="flex gap-4 flex-col">
+            <p className="text-red-400">Setup Call/Put Time</p>
+            <div>
+              <h2>Start Time:</h2>
+              <input
+                type="datetime-local"
+                value={startDateTime}
+                className="text-black"
+                onChange={(e) => setStartDateTime(e.target.value)}
+              />
+              <p>Start Time: {formatDateToLocaleString(startDateTime)}</p>
+            </div>
+            <div>
+              <h2>End Time:</h2>
+              <input
+                type="datetime-local"
+                value={endDateTime}
+                className="text-black"
+                onChange={(e) => setEndDateTime(e.target.value)}
+              />
+              <p>End Time : {formatDateToLocaleString(endDateTime)}</p>
+            </div>
           </div>
-          <div>
-            <h2>End Time:</h2>
-            <input
-              type="datetime-local"
-              value={endDateTime}
-              className="text-black"
-              onChange={(e) => setEndDateTime(e.target.value)}
-            />
-            <p>End Time : {endDateTime}</p>
+          <div className="flex gap-4 flex-col">
+            <p className="text-red-400">Setup Withdrawal Time</p>
+            <div>
+              <h2>Start Time:</h2>
+              <input
+                type="datetime-local"
+                value={startWstartTime}
+                className="text-black"
+                onChange={(e) => setWstartTime(e.target.value)}
+              />
+              <p>Start Time: {formatDateToLocaleString(startWstartTime)}</p>
+            </div>
+            <div>
+              <h2>End Time:</h2>
+              <input
+                type="datetime-local"
+                value={startWendTime}
+                className="text-black"
+                onChange={(e) => setWendTime(e.target.value)}
+              />
+              <p>End Time : {formatDateToLocaleString(startWendTime)}</p>
+            </div>
           </div>
         </div>
         <button className="bg-red-400" onClick={handleSetupTime}>

@@ -35,29 +35,16 @@ const Deposit = () => {
   const getJson = async () => {
     try {
       const uniqueId = generateUniqueId();
-      const res = await axios
-        .get(
-          `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json; charset=utf-8",
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        )
-        .then((res) => {
-          axios
-            .post(
-              `https://kdm-money-server.onrender.com/api/v1/payment/pay-process`,
-              {
-                amount: Amount,
-              }
-            )
-            .then((res) => {
-              console.log(res.data);
-            });
-        });
+      const res = await axios.get(
+        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz/`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json; charset=utf-8",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
 
       const responseData = res.data;
       setJsonResponse(JSON.stringify(responseData, null, 2));
@@ -95,7 +82,7 @@ const Deposit = () => {
               type="number"
               name={"Deposit Amount"}
               min={0}
-              placeholder={600}
+              placeholder={"Enter Recharge Amount"}
               onChange={handleInputChange}
             />
           </div>

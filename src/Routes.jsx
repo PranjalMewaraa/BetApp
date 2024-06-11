@@ -28,6 +28,7 @@ import Demo from "./modules/Demo";
 import Payment from "./admin/Payment";
 import AcceptReferal from "./modules/AcceptReferal";
 import WithdrawlReq from "./admin/WithdrawRequest";
+import Confirmation from "./modules/Confirmation";
 const Routes = () => {
   const { token } = useAuth();
   const user = JSON.parse(localStorage.getItem("User"));
@@ -37,6 +38,10 @@ const Routes = () => {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/accept-referal/:id",
+      element: <AcceptReferal />,
     },
     {
       path: "/service",
@@ -69,6 +74,10 @@ const Routes = () => {
       ),
     },
     {
+      path: "/payment-confirmation/:id",
+      element: <Confirmation />,
+    },
+    {
       path: "/admin/products",
       element: (
         <>
@@ -76,6 +85,10 @@ const Routes = () => {
           <Bottombar></Bottombar>
         </>
       ),
+    },
+    {
+      path: "/accept-referal/:id",
+      element: <AcceptReferal />,
     },
   ];
 
@@ -93,6 +106,19 @@ const Routes = () => {
               <Bottombar />
             </>
           ),
+        },
+        {
+          path: "/home",
+          element: (
+            <>
+              <Home />
+              <Bottombar />
+            </>
+          ),
+        },
+        {
+          path: "/accept-referal/:id",
+          element: <AcceptReferal />,
         },
         {
           path: "/login",
@@ -265,6 +291,14 @@ const Routes = () => {
               <Payment />
             </>
           ),
+        },
+        {
+          path: "/accept-referal/:id",
+          element: <AcceptReferal />,
+        },
+        {
+          path: "/payment-confirmation/:id",
+          element: <Confirmation />,
         },
       ],
     },
