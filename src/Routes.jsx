@@ -297,7 +297,7 @@ const Routes = () => {
           element: <AcceptReferal />,
         },
         {
-          path: "/payment-confirmation/:id",
+          path: "/payment-confirmation",
           element: <Confirmation />,
         },
       ],

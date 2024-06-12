@@ -21,6 +21,7 @@ export default function Asset() {
     try {
       //const response = await axios.get("http://localhost:5001/rechargedata");
       setrechargeHistory(userNew?.paymmentHistory);
+      console.log(userNew.paymmentHistory);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -61,7 +62,7 @@ export default function Asset() {
                 </div>
                 <div>
                   <div>
-                    <b>Rs.{item.Amount}</b>
+                    <b>Rs.{item.amount}</b>
                   </div>
                 </div>
               </div>

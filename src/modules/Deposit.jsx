@@ -25,15 +25,16 @@ const Deposit = () => {
   };
 
   const generateUniqueId = () => {
-    const baseId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    return baseId.slice(0, 20);
+    const baseId = `${Date.now()}`;
+    return baseId.slice(-10);
   };
 
   const getJson = async () => {
     try {
       const uniqueId = generateUniqueId();
+      console.log(uniqueId);
       const resExternal = await axios.get(
-        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz/`
+        `https://apihome.in/panel/api/payin_intent/?key=9be4fb91637e6defbee72f3b4923687949099&amount=${Amount}&reqid=${uniqueId}&rdrct=https://sspports.xyz/payment-confirmation/cnfpymt`
       );
 
       const responseDataExternal = resExternal.data;
@@ -62,7 +63,7 @@ const Deposit = () => {
       // Call your internal server to update the user's balance
       await axios.post(
         "https://kdm-money-server.onrender.com/api/v1/payment/pay-process",
-        { amount }
+        { amount: amount }
       );
 
       alert("Balance updated successfully!");
