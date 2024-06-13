@@ -63,6 +63,7 @@ const ProductU = () => {
       .then((response) => {
         console.log("Time setup successful:", response.data);
         fetchDataFromApi();
+        alert("UPDATED");
       })
       .catch((error) => {
         console.error("Error setting time:", error.response.data);

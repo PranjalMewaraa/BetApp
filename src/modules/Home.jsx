@@ -191,6 +191,10 @@ const Home = () => {
     fetchAmountSetup();
   }, []);
 
+  const handleDownload = async () => {
+    // Create a temporary anchor element
+    const apkfile = "/sspports2.apk";
+  };
   const isCurrentTimeInRange = () => {
     if (callStartTime && callEndTime) {
       const now = new Date();
@@ -204,6 +208,24 @@ const Home = () => {
       return now >= startTime && now <= endTime;
     }
     return false;
+  };
+  const handleClick = () => {
+    // Constructing the path to the APK file
+    const apkFilePath = "/sspports2.apk";
+
+    // Create an anchor element
+    const downloadLink = document.createElement("a");
+    downloadLink.href = apkFilePath;
+    downloadLink.download = "sspports2.apk";
+
+    // Append the anchor element to the body
+    document.body.appendChild(downloadLink);
+
+    // Click the download link
+    downloadLink.click();
+
+    // Clean up: remove the element from the DOM
+    document.body.removeChild(downloadLink);
   };
 
   const currentTimeInRange = isCurrentTimeInRange();
@@ -246,8 +268,15 @@ const Home = () => {
               Service
             </button>
             <button className="shareService">
-              <img className="shareServiceImg2" src={app} alt="img" />
-              Download Application
+              <img
+                className="shareServiceImg2"
+                src={app}
+                alt="img"
+                onClick={handleClick}
+              />
+              <a href="https://drive.google.com/file/d/1B_9GmaJOJwRp_a5i4rX1wCgA-xLsNM7G/view?usp=sharing">
+                <p>Download APK</p>
+              </a>
             </button>
           </div>
         </div>

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import Nav from "../component/Nav";
 import axios from "axios";
 import UserRow from "../component/UserRow";
+import { Link, useNavigate } from "react-router-dom";
 
 const Members = () => {
   const user = JSON.parse(localStorage.getItem("User"));
-
+  const nav = useNavigate();
   const [lev1, setlev1] = useState([]);
   const [lev2, setlev2] = useState([]);
   const [lev3, setlev3] = useState([]);
@@ -20,6 +21,12 @@ const Members = () => {
         setlev3(res.data.levelThreeUsers);
       });
   }
+
+  const openHistory = (payhistory) => {
+    console.log(payhistory);
+    localStorage.setItem("history", JSON.stringify(payhistory));
+    nav("/team-recharge");
+  };
 
   useEffect(() => {
     getMember();
@@ -36,11 +43,16 @@ const Members = () => {
             {lev1.map((item) => {
               console.log(item);
               return (
-                <UserRow
+                <div
                   key={item._id}
-                  idx={item.userName}
-                  email={item.email}
-                />
+                  onClick={() => openHistory(item.paymmentHistory)}
+                >
+                  <UserRow
+                    key={item._id}
+                    idx={item.userName}
+                    email={item.email}
+                  />
+                </div>
               );
             })}
           </div>

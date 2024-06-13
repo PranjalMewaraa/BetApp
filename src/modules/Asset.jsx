@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Nav from "../component/Nav";
 
 export default function Asset() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function Asset() {
 
   const fetchWithdrawData = async () => {
     try {
-      //const response = await axios.get("http://localhost:5001/withdrawdata");
+      // const response = await axios.get("http://localhost:5001/withdrawdata");
       setWithdrawHistory(userNew?.withdrawalHistry);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -19,19 +20,49 @@ export default function Asset() {
   };
   const fetchRechargeData = async () => {
     try {
-      //const response = await axios.get("http://localhost:5001/rechargedata");
-      setrechargeHistory(userNew?.paymmentHistory);
+      const response = await axios.get(
+        "https://kdm-money-server.onrender.com/api/v1/auth/user-details"
+      );
+      setrechargeHistory(response?.data.user.paymmentHistory);
       console.log(userNew.paymmentHistory);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
+
+  function convertToIST(utcTimestamp) {
+    // Parse the input timestamp to a Date object
+    const date = new Date(utcTimestamp);
+
+    // Get the UTC time in milliseconds
+    const utcTime = date.getTime();
+
+    // IST is 5 hours and 30 minutes ahead of UTC
+    const istOffset = 5.5 * 60 * 60 * 1000;
+
+    // Calculate the IST time
+    const istTime = new Date(utcTime);
+
+    // Format the date and time
+    const istDateString = istTime.toLocaleString("en-IN", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
+    return istDateString;
+  }
   useEffect(() => {
     fetchRechargeData();
     fetchWithdrawData();
   }, []);
   return (
-    <div className="assetContainer bg-[#121212] text-white">
+    <div className="assetContainer bg-[#121212] text-white mt-10">
       <button
         className="RechargeBtn"
         onClick={() => navigate("/home/action/deposit")}
@@ -60,9 +91,11 @@ export default function Asset() {
                 <div>
                   <div id="rechargeHeading">{item.Heading}</div>
                 </div>
-                <div>
-                  <div>
-                    <b>Rs.{item.amount}</b>
+                <div className="w-full">
+                  <div className="flex justify-between w-full">
+                    <b>TXN ID - {item._id}</b>
+                    <b> TXN RS - {item.amount}</b>
+                    <b>{convertToIST(item.createdAt)}</b>
                   </div>
                 </div>
               </div>

@@ -29,6 +29,7 @@ import Payment from "./admin/Payment";
 import AcceptReferal from "./modules/AcceptReferal";
 import WithdrawlReq from "./admin/WithdrawRequest";
 import Confirmation from "./modules/Confirmation";
+import TeamHistory from "./modules/TeamHistory";
 const Routes = () => {
   const { token } = useAuth();
   const user = JSON.parse(localStorage.getItem("User"));
@@ -158,6 +159,10 @@ const Routes = () => {
         {
           path: "/admin/user-detail",
           element: <AdminDetail />,
+        },
+        {
+          path: "/team-recharge",
+          element: <TeamHistory />,
         },
         {
           path: "/admin/withdraw-request",

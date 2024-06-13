@@ -17,7 +17,7 @@ const Nav = (props) => {
         <span className="h-full mr-4">
           <img src={log} alt="" className="md:h-full max-h-20" />
         </span>
-        SSP Ports
+        SSP Ports..
       </p>
       <div className="h-[95%] md:h-auto flex gap-4 md:gap-8 items-center mr-4 md:mr-8 ml-4 md:ml-8">
         <span className="hidden md:inline-block text-red-600">BALANCE:</span>

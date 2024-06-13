@@ -47,7 +47,7 @@ function AcceptReferal() {
           if (response.data.success) {
             localStorage.setItem("User", JSON.stringify(response.data.user));
             toast.success("User Joined");
-            navigate("/");
+            navigate("/login");
           }
         } catch (error) {
           toast.error("An error occurred during signup. Please try again.");
@@ -73,7 +73,7 @@ function AcceptReferal() {
           placeholder="Full Name"
           value={formData.userName}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -82,7 +82,7 @@ function AcceptReferal() {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -91,7 +91,7 @@ function AcceptReferal() {
           placeholder="Phone number"
           value={formData.phoneNo}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -100,7 +100,7 @@ function AcceptReferal() {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
         <input
@@ -109,7 +109,7 @@ function AcceptReferal() {
           placeholder="Confirm Password"
           value={formData.confirmPassword}
           onChange={handleChange}
-          className="w-full h-10 mb-4 px-4 border border-gray-300 rounded-lg outline-none focus:border-blue-500 transition-colors"
+          className="w-full h-10 mb-4 px-4 border border-gray-300 text-black rounded-lg outline-none focus:border-blue-500 transition-colors"
           required
         />
 
